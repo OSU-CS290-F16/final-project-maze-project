@@ -12,6 +12,7 @@ var instructionsHTML= fs.readFileSync(staticDir + '/instructions.html','utf8');
 var errorHTML= fs.readFileSync(staticDir + '/404.html','utf8');
 var styleCSS= fs.readFileSync(staticDir + '/style.css','utf8');
 var styleCSS2= fs.readFileSync(staticDir + '/style2.css','utf8');
+var mazeJS= fs.readFileSync(staticDir + '/maze.js','utf8');
 
 http.createServer(function (req, res){
     if(req.url.indexOf('Easy') !=-1 || req.url=='/'){
@@ -29,6 +30,12 @@ http.createServer(function (req, res){
     else if (req.url.indexOf('style2.css') != -1){
         res.writeHead(200, {'Content-Type': 'text/css'});
         res.write(styleCSS2);
+        res.end();
+    }
+
+    else if (req.url.indexOf('maze.js') != -1){
+        res.writeHead(200, {'Content-Type': 'text/javascript'});
+        res.write(mazeJS);
         res.end();
     }
 
