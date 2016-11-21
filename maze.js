@@ -6,19 +6,31 @@ var title = document.querySelector("h1");
 
 
 
-function linkChange(event) {
-	alert("Link change!");
+function linkChangeE(event) {
+window.location.href = 'http://localhost:3000/Easy';
+}
+
+function linkChangeM(event) {
+window.location.href = 'http://localhost:3000/Medium';
+}
+
+function linkChangeH(event) {
+window.location.href = 'http://localhost:3000/Hard';
+}
+
+function linkChangeI(event) {
+window.location.href = 'http://localhost:3000/instructions';
 }
 
 function titleClick(event) {
 	alert("You clicked the main header!");
-	
+
 }
 
 
 
-easyLink.addEventListener('click', linkChange);
-mediumLink.addEventListener('click', linkChange);
-hardLink.addEventListener('click', linkChange);
-instructionsLink.addEventListener('click', linkChange);
+easyLink.addEventListener('click', linkChangeE);
+mediumLink.addEventListener('click', linkChangeM);
+hardLink.addEventListener('click', linkChangeH);
+instructionsLink.addEventListener('click', linkChangeI);
 title.addEventListener('click', titleClick);
