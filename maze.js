@@ -42,3 +42,63 @@ mediumLink.addEventListener('click', linkChangeM);
 hardLink.addEventListener('click', linkChangeH);
 instructionsLink.addEventListener('click', linkChangeI);
 title.addEventListener('click', titleClick);
+
+var active = false;
+var i = 0;
+var start_btn = document.getElementById("control");
+var pause_btn = document.getElementById("reset");
+var time_btn = document.getElementById("score");
+var score_time;
+start_btn.addEventListener('click', changeState);
+pause_btn.addEventListener('click', reset);
+
+
+function start_timer(){
+	if(active){
+		var timer = document.getElementById("my_timer").innerHTML;
+		var arr = timer.split(":");
+		var hour = arr[0];
+		var min = arr[1];
+		var sec = arr[2];
+
+		if(sec == 59){
+			if(min == 59){
+				hour++;
+				min = 0;
+				if (hour < 10) hour = "0" + hour;
+			}
+				else
+			{
+				min++;
+			}
+				if(min < 10) min = "0" + min;
+				sec = 0;
+			}
+				else
+			{
+				sec++;
+				if (sec<10) sec = "0" + sec;
+			}
+			document.getElementById("my_timer").innerHTML = hour + ":" + min + ":" + sec;
+			setTimeout(start_timer, 1000);
+		}
+		score_time = hour + ":" + min + ":" +sec;
+	}
+
+	function changeState(){
+		if(active == false){
+			active = true;
+			start_timer();
+			console.log("start");
+			document.getElementById("control").innerHTML = "PAUSE";
+		}else{
+				active = false;
+				console.log("pause");
+				document.getElementById("control").innerHTML = "START";
+	}
+}
+
+function reset(){
+			document.getElementById("my_timer").innerHTML = "00" + ":" + "00" + ":" + "00";
+			console.log(score_time);
+}
