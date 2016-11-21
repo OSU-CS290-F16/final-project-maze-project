@@ -92,3 +92,33 @@ footer{
   bottom: 0%;
   background-color : gray;
 }
+
+
+
+
+canvas {
+	display: inline;
+	margin: 10px auto;
+	margin: 3px solid black;
+}
+
+
+
+.button {
+	border: 1px solid black;
+	display: inline-block;
+	margin-bottom: 20px;
+	padding: 5px;
+}
+
+.button:hover {
+	border: 1px solid red;
+	color: red;
+	cursor: pointer;
+}
+
+#info {
+	color: black;
+	margin: 10px auto;
+	width: 275px;
+}
