@@ -47,6 +47,20 @@ nav {
   width:100%;
   text-align: center;
 }
+.scoreboard{
+  background-color: #4392e8;
+  display: inline-block;
+  position: relative;
+  left: 90%;
+  border-radius: 20px;
+  height: 220px;
+  width: 120px;
+}
+
+.records, .scoret{
+  text-align: center;
+  margin-bottom: 0px;
+}
 
 .navbar-list {
   list-style-type: none;
