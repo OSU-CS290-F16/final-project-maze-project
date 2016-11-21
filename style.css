@@ -49,9 +49,10 @@ nav {
 }
 .scoreboard{
   background-color: #4392e8;
-  display: inline-block;
+  display: block;
   position: relative;
-  left: 90%;
+  left: 1000px;
+  top: -16px;
   border-radius: 20px;
   height: 220px;
   width: 120px;
@@ -89,7 +90,6 @@ nav {
 footer{
   position: absolute;
   width: 100%;
-  bottom: 0%;
   background-color : gray;
 }
 
@@ -118,7 +118,7 @@ canvas {
 }
 
 #info {
-	color: black;
-	margin: 10px auto;
-	width: 275px;
+	margin:0;
+  	display: inline-block;
+  	width: 200px;
 }
