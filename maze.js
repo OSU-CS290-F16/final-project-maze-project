@@ -102,3 +102,18 @@ function reset(){
 			document.getElementById("my_timer").innerHTML = "00" + ":" + "00" + ":" + "00";
 			console.log(score_time);
 }
+
+
+/* FUNCTION COURTESY OF STACK OVERFLOW USER CHARLES JOHN THOMPSON III*/
+var blurFunction = function(state) {
+    var containerElement = document.getElementsByTagName('game')[0];
+    var overlayEle = document.getElementById('overlay');
+
+    if (state) {
+        overlayEle.style.display = 'block';
+        containerElement.setAttribute('class', 'blur');
+    } else {
+        overlayEle.style.display = 'none';
+        containerElement.setAttribute('class', null);
+    }
+};
