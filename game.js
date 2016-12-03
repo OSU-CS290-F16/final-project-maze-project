@@ -138,5 +138,6 @@ function verticalWall(left, right, dir){
 
 function end(){
 	window.clearInterval(game);
-	alert("Congrats");
+	
+	alert("You cleared with: " + hour + ":" + min + ":" + sec);
 }
