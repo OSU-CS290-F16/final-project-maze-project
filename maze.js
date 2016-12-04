@@ -102,8 +102,16 @@ function start_timer(){
 }
 
 function reset(){
-			document.getElementById("my_timer").innerHTML = "00" + ":" + "00" + ":" + "00";
-			console.log(score_time);
+	  var old_score = document.getElementById("score1").innerHTML;
+		document.getElementById("my_timer").innerHTML = "00" + ":" + "00" + ":" + "00";
+		if(old_score < score_time){
+			alert("Your score isn't the highest score, try more");
+		}
+		else {
+			alert("congrats, you are the highest score!");
+			document.getElementById("score1").innerHTML = score_time;
+		}
+		console.log(old_score);
 }
 
 
