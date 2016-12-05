@@ -59,10 +59,10 @@ pause_btn.addEventListener('click', reset);
 function start_timer(){
 	if(active){
 		var timer = document.getElementById("my_timer").innerHTML;
-		var arr = timer.split(":");
+		/*var arr = timer.split(":");
 		var hour = arr[0];
 		var min = arr[1];
-		var sec = arr[2];
+		var sec = arr[2];*
 
 		if(sec == 59){
 			if(min == 59){
@@ -74,18 +74,21 @@ function start_timer(){
 			{
 				min++;
 			}
-				if(min < 10) min = "0" + min;
+			if(min < 10) min = "0" + min;
 				sec = 0;
 			}
 				else
 			{
 				sec++;
 				if (sec<10) sec = "0" + sec;
-			}
-			document.getElementById("my_timer").innerHTML = hour + ":" + min + ":" + sec;
+			}*/
+			var sec = timer;
+
+			sec++;
+			document.getElementById("my_timer").innerHTML = sec;
 			setTimeout(start_timer, 1000);
 		}
-		score_time = hour + ":" + min + ":" +sec;
+		score_time = sec;
 	}
 
 	function changeState(){
@@ -103,7 +106,7 @@ function start_timer(){
 
 function reset(){
 	  var old_score = document.getElementById("score1").innerHTML;
-		document.getElementById("my_timer").innerHTML = "00" + ":" + "00" + ":" + "00";
+		document.getElementById("my_timer").innerHTML = "0";
 		if(old_score < score_time){
 			alert("Your score isn't the highest score, try more");
 		}
