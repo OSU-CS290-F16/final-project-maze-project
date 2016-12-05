@@ -6,7 +6,7 @@ function end(){
 	active = false;
 	console.log(endTime);
 	console.log("pause");
-	alert("You cleared with: " + endTime);
+	alert("You cleared with " + endTime + " seconds!");
 	reset();document.getElementById("control").innerHTML = "START";
 	start_timer();
 }
