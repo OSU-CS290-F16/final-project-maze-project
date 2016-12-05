@@ -120,8 +120,11 @@ canvas {
 
 .timer_box{
   border: solid;
-  border-color: red;
-  border-top-width: 10%;
+  border-color: blue;
+  width: 300px;
+  height: 100px;
+  background-color: #42c8f4;
+  box-shadow: 10px 10px 5px #888888;
 }
 
 #info {
