@@ -15,6 +15,8 @@ var styleCSS= fs.readFileSync(staticDir + '/style.css','utf8');
 var styleCSS2= fs.readFileSync(staticDir + '/style2.css','utf8');
 var mazeJS= fs.readFileSync(staticDir + '/maze.js','utf8');
 */
+var errorHTML= fs.readFileSync(staticDir + '/public'+'/404.html','utf8');
+var instructionsHTML= fs.readFileSync(staticDir +'/public'+ '/instructions.html','utf8');
 
 // Maze.js will use these varaibles to update
 var endTime;
@@ -53,13 +55,19 @@ app.get('/', function (req, res) {
   });
 });
 
-
-
-app.get('public/404.html', function(req, res) {
-  res.status(404).render('404-page', {
-    pageTitle: '404'
-  });
+app.get('/instructions', function (req, res) {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write(instructionsHTML);
+    res.end();
 });
+
+app.get('*', function(req, res) {
+  res.writeHead(404, {"Content-Type": "text/html"});
+  res.write(errorHTML);
+  res.end();
+});
+
+
 
 /*
 
@@ -130,4 +138,3 @@ MongoClient.connect(mongoURL, function (err, db) {
 	});
 });
 
-//console.log("==listening on port",port);
