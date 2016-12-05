@@ -83,7 +83,6 @@ function start_timer(){
 				if (sec<10) sec = "0" + sec;
 			}*/
 			var sec = timer;
-
 			sec++;
 			document.getElementById("my_timer").innerHTML = sec;
 			setTimeout(start_timer, 1000);
@@ -91,15 +90,16 @@ function start_timer(){
 		score_time = sec;
 	}
 
-	function changeState(){
+function changeState(){
 		if(active == false){
 			active = true;
 			start_timer();
 			console.log("start");
-			document.getElementById("control").innerHTML = "PAUSE";
+			document.getElementById("control").innerHTML = "RESET";
 		}else{
 				active = false;
 				console.log("pause");
+				reset();
 				document.getElementById("control").innerHTML = "START";
 	}
 }
