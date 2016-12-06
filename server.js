@@ -27,7 +27,7 @@ var app = express();
 
 // Will store database access
 var mongoDB;
-
+var mongoURL='mongodb://salinasr:usethisdb420@ds033317.mlab.com:33317/web_dev';
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars');
@@ -37,18 +37,55 @@ app.use(bodyParser.json());
 
 // Serve static files from public/.
 app.use(express.static(__dirname));
-
 // Render the index page for the root URL path ('/').
+//var collection= mongoDB.collection('web_dev');
+var collection
+// Make a connection to Mongo database
+/*MongoClient.connect('mongodb://salinasr:usethisdb420@ds033317.mlab.com:33317/web_dev', function (err, db) {
+	if (err) {
+		console.log("== Unable to make connection to MongoDB Database.")
+		throw err;
+	}
+else {
+  mongoDB= db;
+  test=1;
+  console.log(mongoDB);
+  }
+	app.listen(port, function () {
+		console.log("== Listening on port", port);
+	});
+});
+*/
+MongoClient.connect(mongoURL, function (err, db) {
+  if (err) {
+    console.log("== Unable to make connection to MongoDB Database.")
+    throw err;
+  }
+  mongoDB = db;
+  app.listen(port, function () {
+    console.log("== Listening on port", port);
+  });
+});
+
+
+
+
 app.get('/', function (req, res) {
   res.render('index-page', {
     pageTitle: 'Welcome!'
   });
+
 });
 
 app.get('/instructions', function (req, res) {
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.write(instructionsHTML);
     res.end();
+    collection = mongoDB.collection('web_dev');
+    collection.insert({second:200});
+
+    //console.log(collection.find({}).toArray);
+  //  console.log(collection);
 });
 
 app.get('*', function(req, res) {
@@ -58,20 +95,9 @@ app.get('*', function(req, res) {
 });
 
 function sendClearTime(endTimeInt) {
-	
+
 	console.log("Here is where '" + endTimeInt + "' will be sent to the database." );
-	
+
 }
 
-// Make a connection to Mongo database
-MongoClient.connect('mongodb://salinasr:usethisdb420@ds033317.mlab.com:33317/web_dev', function (err, db) {
-	if (err) {
-		console.log("== Unable to make connection to MongoDB Database.")
-		throw err;
-	}
-	mongoDB = db;
-	app.listen(port, function () {
-		console.log("== Listening on port", port);
-	});
-});
 
