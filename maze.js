@@ -59,8 +59,58 @@ var pause_btn = document.getElementById("reset");
 var time_btn = document.getElementById("score");
 var score_time;
 var ticktock = false;
+var in_easy = true;
+var in_mid = false;
+var in_high = false;
+
 //start_btn.addEventListener('click', changeState);
 //pause_btn.addEventListener('click', reset);
+
+
+function linkChangeE(event) {
+  //window.location.href = 'http://localhost:3000/';
+	floorSize = 80;
+	changeDfficulty();
+	console.log('Easy');
+	in_easy = true;
+	in_mid = false;
+	in_high = false;
+}
+
+function linkChangeM(event) {
+	//window.location.href = 'http://localhost:3000/Medium';
+	floorSize=40;
+	changeDfficulty();
+	console.log('Medium');
+	in_easy = false;
+	in_mid = true;
+	in_high = false;
+}
+
+function linkChangeH(event) {
+	//window.location.href = 'http://localhost:3000/Hard';
+	floorSize=20;
+	changeDfficulty();
+	console.log('Hard');
+	//floorSize=20;
+	in_easy = false;
+	in_mid = false;
+	in_high = true;
+}
+
+function changeDfficulty(){
+	clear();
+	player.x = 0;
+	player.y = 0;
+	wallSize=5,player={size:floorSize-5,speed:10,x:0,y:0,velX:0,velY:0},ctx=document.getElementById("game").getContext("2d");ctx.canvas.width=Math.round((window.innerWidth-2*floorSize)/floorSize)*floorSize+wallSize;var WIDTH=ctx.canvas.width-wallSize,HEIGHT=ctx.canvas.height-wallSize,rows=Math.floor(HEIGHT/floorSize),cols=Math.floor(WIDTH/floorSize),map=new Array(rows),exit=null,game=null,animation=null;document.getElementById("animate").onclick=animate;
+	generateMap();
+	play();
+	sec = 0;
+	active = false;
+	ticktock = false;
+	document.getElementById("my_timer").innerHTML = "0";
+}
+
 
 function start_timer(){
 	if(active){
