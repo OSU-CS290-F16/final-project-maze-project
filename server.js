@@ -45,7 +45,6 @@ app.get('/', function (req, res) {
    */
   var collection = mongoDB.collection('web_dev4');
   collection.find({}).toArray(function (err, web_dev4) {
-  console.log(web_dev4[0]);
   res.render('index-page', {
         first:web_dev4[0].first,
         second:web_dev4[0].second,
