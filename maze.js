@@ -11,6 +11,7 @@ function end(){
 	console.log(endTime);
 	console.log("pause");
 	alert("You cleared with: " + endTime + " seconds!");
+	checkscore(endTimeInt);
 	reset();
 	document.getElementById("control").innerHTML = "START";
 	start_timer();
@@ -110,14 +111,14 @@ function changeState(){
 }
 
 function reset(){
-	  //var old_score = document.getElementById("score1").innerHTML;
-    first=document.getElementById("easy-high").innerHTML;
-		second=document.getElementById("mid-high").innerHTML;
-		third=document.getElementById("hard-high").innerHTML;
-
 		document.getElementById("my_timer").innerHTML = "0";
 		document.getElementById("score1").innerHTML=score_time;
+}
 
+function checkscore(score_time){
+		first=document.getElementById("easy-high").innerHTML;
+		second=document.getElementById("mid-high").innerHTML;
+		third=document.getElementById("hard-high").innerHTML;
 		if(score_time<first){
 			alert("congrats, you are the highest score!");
 			document.getElementById("easy-high").innerHTML=score_time;
@@ -139,7 +140,7 @@ function reset(){
 		else {
 			document.getElementById("score1").innerHTML=score_time;
 			alert("Your score isn't the highest score, try more");
-		}
+		}	
 }
 
 function storescore(score) {
