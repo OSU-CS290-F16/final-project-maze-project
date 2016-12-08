@@ -13,6 +13,8 @@ var mongoDB;
 var collection;
 var mongoURL='mongodb://salinasr:usethisdb420@ds033317.mlab.com:33317/web_dev';
 
+
+var score=1000;
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars');
 
@@ -21,8 +23,7 @@ app.set('view engine', 'handlebars');
 
 //Serve static files from public/.
 //app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(express.static(__dirname));
 // Make a connection to Mongo database
 MongoClient.connect(mongoURL, function (err, db) {
   if (err) {
@@ -43,7 +44,6 @@ MongoClient.connect(mongoURL, function (err, db) {
         score:30
  });
 });*/
-
 app.get('/', function (req, res) {
 
   /*
@@ -52,13 +52,13 @@ app.get('/', function (req, res) {
    */
   var collection = mongoDB.collection('web_dev');
   collection.find({}).toArray(function (err, web_dev) {
+  //console.log(score);
   res.render('index-page', {
         first:web_dev[0].first,
         second:web_dev[1].second,
         //third:web_dev[0].third
       });
   });
-
 });
 
 
@@ -73,6 +73,26 @@ app.get('*', function (req, res) {
     other:1
   });
 });
+
+
+function sendClearTime(endTimeInt) {
+    /**var int=endTimeInt;
+    collection = mongoDB.collection('web_dev');
+    collection.update({first:int});
+*/
+   	console.log("Here is where '" + endTimeInt + "' will be sent to the database." );
+    //window.location.href = 'http://localhost:3000/';
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -99,15 +119,6 @@ app.get('*', function(req, res) {
 });
 */
 
-function sendClearTime(endTimeInt) {
-    var int=endTimeInt;
-    collection = mongoDB.collection('web_dev');
-    collection.update({$set:{first:int}});
-    
-   	console.log("Here is where '" + endTimeInt + "' will be sent to the database." );
-    window.location.href = 'http://localhost:3000/';
-
-}
 
 /*
 var indexHTML= fs.readFileSync(staticDir + '/index.html','utf8');
