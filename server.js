@@ -24,6 +24,7 @@ app.set('view engine', 'handlebars');
 //Serve static files from public/.
 //app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname));
+app.use(bodyParser.json());
 // Make a connection to Mongo database
 MongoClient.connect(mongoURL, function (err, db) {
   if (err) {
@@ -36,14 +37,6 @@ MongoClient.connect(mongoURL, function (err, db) {
   });
 });
 
-//var collection= mongoDB.collection('web_dev');
-// Render the index page for the root URL path ('/').
-/*app.get('/', function (req, res) {
-
-  res.render('index-page',{
-        score:30
- });
-});*/
 app.get('/', function (req, res) {
 
   /*
@@ -52,7 +45,6 @@ app.get('/', function (req, res) {
    */
   var collection = mongoDB.collection('web_dev');
   collection.find({}).toArray(function (err, web_dev) {
-  //console.log(score);
   res.render('index-page', {
         first:web_dev[0].first,
         second:web_dev[1].second,
@@ -75,58 +67,8 @@ app.get('*', function (req, res) {
 });
 
 
-function sendClearTime(endTimeInt) {
-    /**var int=endTimeInt;
-    collection = mongoDB.collection('web_dev');
-    collection.update({first:int});
-*/
-   	console.log("Here is where '" + endTimeInt + "' will be sent to the database." );
-    //window.location.href = 'http://localhost:3000/';
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-
-/*app.get('/', function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.write(indexHTML);
-  res.end();
-
+app.post('/', function (req, res, next) {
+  collection = mongoDB.collection('web_dev');
+  collection.updateOne({}, {first:req.body.number});
 });
 
-app.get('/instructions', function (req, res) {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write(instructionsHTML);
-    res.end();
-});
-
-app.get('*', function(req, res) {
-  res.writeHead(404, {"Content-Type": "text/html"});
-  res.write(errorHTML);
-  res.end();
-});
-*/
-
-
-/*
-var indexHTML= fs.readFileSync(staticDir + '/index.html','utf8');
-var indexMedHTML= fs.readFileSync(staticDir + '/indexMEDIUM.html','utf8');
-var indexHardHTML= fs.readFileSync(staticDir + '/indexHARD.html','utf8');
-var instructionsHTML= fs.readFileSync(staticDir + '/instructions.html','utf8');
-var errorHTML= fs.readFileSync(staticDir + '/404.html','utf8');
-var styleCSS= fs.readFileSync(staticDir + '/style.css','utf8');
-var styleCSS2= fs.readFileSync(staticDir + '/style2.css','utf8');
-var mazeJS= fs.readFileSync(staticDir + '/maze.js','utf8');
-*/
