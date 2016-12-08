@@ -5,6 +5,7 @@ body{
 main{
     display: inline-block;
 }
+
 a{
   text-decoration: none;
 }
@@ -12,11 +13,11 @@ a{
 a.visited{
   color: black;
 }
+
 header {
   background-color: #42b3f4;
   padding: -10px;
   margin: -10px;
-
 }
 
 header h1 {
@@ -48,14 +49,21 @@ nav {
   text-align: center;
 }
 .scoreboard{
+  float: right;
   background-color: #4392e8;
   display: block;
   position: relative;
-  left: 1000px;
-  top: -16px;
+  right: 90%
+  width: 150px;
+  height: 150px;
+  overflow: scroll;
+  left: 0px;
+  /*position: relative;
+  left: 800px;
+  top: -10px;
   border-radius: 20px;
   height: 220px;
-  width: 120px;
+  width: 120px;*/
 }
 
 .records, .scoret{
@@ -93,9 +101,6 @@ footer{
   background-color : gray;
 }
 
-
-
-
 canvas {
 	display: inline;
 	margin: 10px auto;
@@ -121,8 +126,8 @@ canvas {
 .timer_box{
   border: solid;
   border-color: blue;
-  width: 300px;
-  height: 100px;
+  width: 100px;
+  height: 50px;
   background-color: #42c8f4;
   box-shadow: 10px 10px 5px #888888;
 }
